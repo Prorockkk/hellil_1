@@ -19,7 +19,7 @@ public class App {
 		File file = new File("D://test_1.txt");
 		try {
 			List<String> list_1 = new ArrayList<String>();
-			App.arrToList(App.findWords(file), list_1);
+			list_1  = App.findWords(file);
 			System.out.println(list_1);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -39,7 +39,7 @@ public class App {
 		}
 	}
 	
-	public static String[] findWords(File file) throws FileNotFoundException
+	public static ArrayList<String> findWords(File file) throws FileNotFoundException
 	{
 		FileReader r = new FileReader(file);
 		String line = "";
@@ -51,7 +51,17 @@ public class App {
 				line = line + l;
 			}
 			line = line.replaceAll("[^A-Za-z0-9]", " ");
-			return line.split(" ");
+			ArrayList<String> arr = new ArrayList<String>();
+			App.arrToList(line.split(" "), arr);
+			for (int i = arr.size() - 1; i > 0; i--)
+			{
+				if (arr.get(i).equals("") || arr.get(i).equals(","))
+				{
+					arr.remove(i);
+					
+				}
+			}
+			return arr;
 		} catch (IOException x) 
 		{
 			System.err.format("IOException: %s%n", x);
