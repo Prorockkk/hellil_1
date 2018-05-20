@@ -10,12 +10,14 @@ public class App {
 	
 	public static void main(String[] args)
 	{
+		//№1
 		String[] x = {"1", "2", "3"};
 		List<String> list = new ArrayList<String>();
 		System.out.println(list);
 		App.arrToList(x, list);
 		System.out.println(list);
 		
+		//№2
 		File file = new File("D://test_1.txt");
 		try {
 			List<String> list_1 = new ArrayList<String>();
@@ -25,6 +27,8 @@ public class App {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//№3
 		Testthreads t = new Testthreads();
 		
 
